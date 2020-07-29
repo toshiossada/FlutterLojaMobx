@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../shared/helpers/errors.dart';
+import '../helpers/errors.dart';
 import '../models/login_user_model.dart';
 import '../models/signup_user_model.dart';
-import '../../../shared/models/user_model.dart';
+import '../models/user_model.dart';
 import '../repositories/interfaces/user_repository_interface.dart';
 import 'interfaces/user_service_interface.dart';
 
@@ -44,5 +44,10 @@ class UserService implements IUserService {
   @override
   Future<Either<Failure, UserModel>> getDocumentUser(String id) {
     return _userReppository.getDocumentUser(id);
+  }
+
+  @override
+  Future<Either<Failure, bool>> signOut() {
+    return _userReppository.signOut();
   }
 }

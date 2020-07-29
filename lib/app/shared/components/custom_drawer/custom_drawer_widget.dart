@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'custom_drawer_controller.dart';
+import 'custom_drawer_header/custom_drawer_header_widget.dart';
 import 'drawer_tile/drawer_tile_widget.dart';
 
 // ignore: must_be_immutable
@@ -16,6 +17,7 @@ class CustomDrawerWidget extends StatelessWidget {
         builder: (_) {
           return ListView(
             children: [
+              CustomDrawerHeaderWidget(),
               DrawerTileWidget(
                 icon: Icons.home,
                 title: 'Inicio',

@@ -4,11 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../shared/helpers/errors.dart';
-import '../../../shared/helpers/firebase_errors.dart';
+import '../helpers/errors.dart';
+import '../helpers/firebase_errors.dart';
 import '../models/login_user_model.dart';
 import '../models/signup_user_model.dart';
-import '../../../shared/models/user_model.dart';
+import '../models/user_model.dart';
 import 'interfaces/user_repository_interface.dart';
 
 part 'user_repository.g.dart';
@@ -43,6 +43,19 @@ class UserRepository implements IUserRepository {
       var user = await auth.currentUser();
       var result = await getDocumentUser(user.uid);
       return result;
+    } on PlatformException catch (e) {
+      return Left(
+          FirebaseFailure(message: getErrorString(e.code), code: e.code));
+    } on Exception catch (e) {
+      return Left(DefaultFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> signOut() async {
+    try {
+      var _ = await auth.signOut();
+      return Right(true);
     } on PlatformException catch (e) {
       return Left(
           FirebaseFailure(message: getErrorString(e.code), code: e.code));

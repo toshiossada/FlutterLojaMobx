@@ -6,8 +6,8 @@ import 'package:mobx/mobx.dart';
 
 import '../../shared/components/loading_dialog/loading_dialog.dart';
 import '../../shared/models/user_model.dart';
-import 'models/login_user_model.dart';
-import 'services/interfaces/user_service_interface.dart';
+import '../../shared/models/login_user_model.dart';
+import '../../shared/services/interfaces/user_service_interface.dart';
 
 part 'login_controller.g.dart';
 
@@ -60,7 +60,7 @@ abstract class _LoginControllerBase with Store {
         }, (user) {
           this.user = user;
           userStore.setUser(user);
-          // Modular.to.pushReplacementNamed('/home');
+          Modular.to.pop();
         });
       } on Exception catch (e) {
         asuka.showSnackBar(SnackBar(content: Text(e.toString())));

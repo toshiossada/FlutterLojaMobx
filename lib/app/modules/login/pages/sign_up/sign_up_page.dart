@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:string_validator/string_validator.dart' as validator;
 
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../components/password_text_form_field/password_text_form_field_widget.dart';

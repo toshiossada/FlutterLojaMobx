@@ -1,11 +1,12 @@
 import 'package:asuka/asuka.dart' as asuka;
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:loja/app/modules/login/services/interfaces/user_service_interface.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../shared/components/loading_dialog/loading_dialog.dart';
-import '../../models/signup_user_model.dart';
+import '../../../../shared/models/signup_user_model.dart';
+import '../../../../shared/services/interfaces/user_service_interface.dart';
+import '../../../../shared/stores/user_store.dart';
 
 part 'sign_up_controller.g.dart';
 
@@ -16,6 +17,9 @@ abstract class _SignUpControllerBase with Store {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final ILoadingDialog _loading;
   final IUserService _userService;
+  final UserStore userStore;
+
+  _SignUpControllerBase(this._loading, this._userService, this.userStore);
 
   @observable
   String email;
@@ -48,8 +52,6 @@ abstract class _SignUpControllerBase with Store {
   @action
   void setName(String v) => name = v;
 
-  _SignUpControllerBase(this._loading, this._userService);
-
   Future<void> cadastrar() async {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
@@ -57,9 +59,18 @@ abstract class _SignUpControllerBase with Store {
         _loading.show();
         await Future.delayed(Duration(seconds: 1));
         var _ = await _userService.signup(user);
+        await Future.delayed(Duration(seconds: 1));
+        var currenteUser = await _userService.currentUser();
+        currenteUser.fold(
+            (l) => asuka.showSnackBar(SnackBar(
+                  content: Text('Falha ao entrar: ${l.message}'),
+                  backgroundColor: Colors.red,
+                )),
+            userStore.setUser);
+
         asuka.showSnackBar(
             SnackBar(content: Text('Usuario Criado com sucesso!')));
-        Modular.to.pop();
+        Modular.to.pushNamedAndRemoveUntil('/', ModalRoute.withName('/'));
       } on Exception catch (e) {
         asuka.showSnackBar(SnackBar(content: Text(e.toString())));
       } finally {

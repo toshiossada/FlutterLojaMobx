@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../shared/store/page_store.dart';
+import '../../shared/stores/page_store.dart';
 
 part 'home_controller.g.dart';
 

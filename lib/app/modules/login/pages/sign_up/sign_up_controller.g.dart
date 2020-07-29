@@ -7,7 +7,8 @@ part of 'sign_up_controller.dart';
 // **************************************************************************
 
 final $SignUpController = BindInject(
-  (i) => SignUpController(i<ILoadingDialog>(), i<IUserService>()),
+  (i) =>
+      SignUpController(i<ILoadingDialog>(), i<IUserService>(), i<UserStore>()),
   singleton: true,
   lazy: true,
 );

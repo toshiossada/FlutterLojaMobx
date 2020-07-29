@@ -1,5 +1,4 @@
 import 'package:string_validator/string_validator.dart' as validator;
-import '../../../shared/models/user_model.dart';
 
 class LoginUserModel {
   final String email;
@@ -13,7 +12,6 @@ class LoginUserModel {
   LoginUserModel copyWith({
     String email,
     String password,
-    UserModel user,
   }) {
     return LoginUserModel(
       email: email ?? this.email,
