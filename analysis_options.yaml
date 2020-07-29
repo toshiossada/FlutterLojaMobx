@@ -13,3 +13,4 @@ linter:
     use_setters_to_change_properties: false
     one_member_abstracts: false
     unnecessary_brace_in_string_interps: false
+    curly_braces_in_flow_control_structures: false

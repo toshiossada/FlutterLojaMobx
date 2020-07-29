@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../store/page_store.dart';
+import '../../stores/page_store.dart';
 
 part 'custom_drawer_controller.g.dart';
 
@@ -11,14 +12,15 @@ class CustomDrawerController = _CustomDrawerControllerBase
 
 abstract class _CustomDrawerControllerBase with Store {
   final PageStore pageStore;
+
   @observable
-  int page = 0;
+  int currentPage = 0;
 
   _CustomDrawerControllerBase(this.pageStore);
 
   @action
   void jumpToPage(int i) {
-    page = i;
+    currentPage = i;
     pageStore.setPage(i);
   }
 }

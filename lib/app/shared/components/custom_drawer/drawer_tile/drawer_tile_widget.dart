@@ -16,6 +16,7 @@ class DrawerTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Theme.of(context).primaryColor;
     return InkWell(
       onTap: onTap,
       child: SizedBox(
@@ -27,14 +28,14 @@ class DrawerTileWidget extends StatelessWidget {
               child: Icon(
                 icon,
                 size: 32,
-                color: selected ?? false ? Colors.red : Colors.grey[700],
+                color: selected ?? false ? primaryColor : Colors.grey[700],
               ),
             ),
             Text(
               title,
               style: TextStyle(
                 fontSize: 16,
-                color: selected ?? false ? Colors.red : Colors.grey[700],
+                color: selected ?? false ? primaryColor : Colors.grey[700],
               ),
             ),
           ],

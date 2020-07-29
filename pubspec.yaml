@@ -21,6 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  asuka: ^1.0.4
+  dartz: ^0.9.1
+  string_validator: ^0.1.4
+  font_awesome_flutter: ^8.8.1
   firebase_storage: ^3.1.6
   firebase_auth: ^0.16.1
   cloud_firestore: ^0.13.7
