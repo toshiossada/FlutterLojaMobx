@@ -13,38 +13,55 @@ class CustomDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Observer(
-        builder: (_) {
-          return ListView(
-            children: [
-              CustomDrawerHeaderWidget(),
-              DrawerTileWidget(
-                icon: Icons.home,
-                title: 'Inicio',
-                onTap: () => controller.jumpToPage(0),
-                selected: controller.currentPage == 0,
+      child: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color.fromARGB(255, 203, 236, 241),
+                  Colors.white,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
-              DrawerTileWidget(
-                icon: Icons.list,
-                title: 'Produtos',
-                onTap: () => controller.jumpToPage(1),
-                selected: controller.currentPage == 1,
-              ),
-              DrawerTileWidget(
-                icon: Icons.playlist_add_check,
-                title: 'Meus Pedidos',
-                onTap: () => controller.jumpToPage(2),
-                selected: controller.currentPage == 2,
-              ),
-              DrawerTileWidget(
-                icon: Icons.location_on,
-                title: 'Lojas',
-                onTap: () => controller.jumpToPage(3),
-                selected: controller.currentPage == 3,
-              ),
-            ],
-          );
-        },
+            ),
+          ),
+          Observer(
+            builder: (_) {
+              return ListView(
+                children: [
+                  CustomDrawerHeaderWidget(),
+                  DrawerTileWidget(
+                    icon: Icons.home,
+                    title: 'Inicio',
+                    onTap: () => controller.jumpToPage(0),
+                    selected: controller.currentPage == 0,
+                  ),
+                  const Divider(),
+                  DrawerTileWidget(
+                    icon: Icons.list,
+                    title: 'Produtos',
+                    onTap: () => controller.jumpToPage(1),
+                    selected: controller.currentPage == 1,
+                  ),
+                  DrawerTileWidget(
+                    icon: Icons.playlist_add_check,
+                    title: 'Meus Pedidos',
+                    onTap: () => controller.jumpToPage(2),
+                    selected: controller.currentPage == 2,
+                  ),
+                  DrawerTileWidget(
+                    icon: Icons.location_on,
+                    title: 'Lojas',
+                    onTap: () => controller.jumpToPage(3),
+                    selected: controller.currentPage == 3,
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
       ),
     );
   }
