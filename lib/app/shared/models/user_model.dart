@@ -11,7 +11,7 @@ class UserModel {
     this.id,
   });
 
-  static UserModel fromDocument(DocumentSnapshot document) {
+  factory UserModel.fromDocument(DocumentSnapshot document) {
     return UserModel(
       id: document.documentID,
       name: document['name'] as String,

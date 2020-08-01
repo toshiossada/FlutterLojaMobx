@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../helpers/errors.dart';
-import '../helpers/firebase_errors.dart';
+import '../helpers/firebase_errors.dart' as firebase_errors;
 import '../models/login_user_model.dart';
 import '../models/signup_user_model.dart';
 import '../models/user_model.dart';
@@ -30,8 +30,8 @@ class UserRepository implements IUserRepository {
       var result = await getDocumentUser(authResult.user.uid);
       return result;
     } on PlatformException catch (e) {
-      return Left(
-          FirebaseFailure(message: getErrorString(e.code), code: e.code));
+      return Left(FirebaseFailure(
+          message: firebase_errors.getErrorString(e.code), code: e.code));
     } on Exception catch (e) {
       return Left(DefaultFailure(message: e.toString()));
     }
@@ -44,8 +44,8 @@ class UserRepository implements IUserRepository {
       var result = await getDocumentUser(user.uid);
       return result;
     } on PlatformException catch (e) {
-      return Left(
-          FirebaseFailure(message: getErrorString(e.code), code: e.code));
+      return Left(FirebaseFailure(
+          message: firebase_errors.getErrorString(e.code), code: e.code));
     } on Exception catch (e) {
       return Left(DefaultFailure(message: e.toString()));
     }
@@ -57,8 +57,8 @@ class UserRepository implements IUserRepository {
       var _ = await auth.signOut();
       return Right(true);
     } on PlatformException catch (e) {
-      return Left(
-          FirebaseFailure(message: getErrorString(e.code), code: e.code));
+      return Left(FirebaseFailure(
+          message: firebase_errors.getErrorString(e.code), code: e.code));
     } on Exception catch (e) {
       return Left(DefaultFailure(message: e.toString()));
     }
@@ -71,8 +71,8 @@ class UserRepository implements IUserRepository {
       var user = UserModel.fromDocument(doc);
       return Right(user);
     } on PlatformException catch (e) {
-      return Left(
-          FirebaseFailure(message: getErrorString(e.code), code: e.code));
+      return Left(FirebaseFailure(
+          message: firebase_errors.getErrorString(e.code), code: e.code));
     } on Exception catch (e) {
       return Left(DefaultFailure(message: e.toString()));
     }
@@ -85,8 +85,8 @@ class UserRepository implements IUserRepository {
           email: user.email, password: user.password);
       return Right(result);
     } on PlatformException catch (e) {
-      return Left(
-          FirebaseFailure(message: getErrorString(e.code), code: e.code));
+      return Left(FirebaseFailure(
+          message: firebase_errors.getErrorString(e.code), code: e.code));
     } on Exception catch (e) {
       return Left(DefaultFailure(message: e.toString()));
     }
@@ -98,8 +98,8 @@ class UserRepository implements IUserRepository {
       await user.firestoreRef.setData(user.toMap());
       return Right(true);
     } on PlatformException catch (e) {
-      return Left(
-          FirebaseFailure(message: getErrorString(e.code), code: e.code));
+      return Left(FirebaseFailure(
+          message: firebase_errors.getErrorString(e.code), code: e.code));
     } on Exception catch (e) {
       return Left(DefaultFailure(message: e.toString()));
     }

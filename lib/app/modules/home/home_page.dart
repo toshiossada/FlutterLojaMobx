@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:loja/app/modules/products/products_module.dart';
 import '../../shared/components/custom_drawer/custom_drawer_widget.dart';
 import 'home_controller.dart';
 
@@ -26,12 +27,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             title: const Text('Home'),
           ),
         ),
-        Scaffold(
-          drawer: CustomDrawerWidget(),
-          appBar: AppBar(
-            title: const Text('Home 2'),
-          ),
-        ),
+        RouterOutlet(module: ProductsModule()),
         Scaffold(
           drawer: CustomDrawerWidget(),
           appBar: AppBar(

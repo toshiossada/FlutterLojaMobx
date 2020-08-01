@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../text_form_field/text_form_field_widget.dart';
+import '../../../../shared/components/text_form_field/text_form_field_widget.dart';
 
 import 'password_text_form_field_controller.dart';
 

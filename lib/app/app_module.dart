@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:loja/app/modules/products/products_module.dart';
 
 import 'app_controller.dart';
 import 'app_widget.dart';
@@ -30,6 +31,7 @@ class AppModule extends MainModule {
   List<Router> get routers => [
         Router(Modular.initialRoute, module: HomeModule()),
         Router('/login', module: LoginModule()),
+        Router('/products', module: ProductsModule()),
       ];
 
   @override

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:flutter_modular/flutter_modular.dart';
+import '../../../../shared/components/text_form_field/text_form_field_widget.dart';
 import '../../components/password_text_form_field/password_text_form_field_widget.dart';
-import '../../components/text_form_field/text_form_field_widget.dart';
+
 import 'sign_up_controller.dart';
 
 class SignUpPage extends StatefulWidget {

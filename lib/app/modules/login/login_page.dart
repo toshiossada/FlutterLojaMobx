@@ -3,8 +3,9 @@ import 'package:string_validator/string_validator.dart' as validator;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../shared/components/text_form_field/text_form_field_widget.dart';
 import 'components/password_text_form_field/password_text_form_field_widget.dart';
-import 'components/text_form_field/text_form_field_widget.dart';
 import 'login_controller.dart';
 
 class LoginPage extends StatefulWidget {
