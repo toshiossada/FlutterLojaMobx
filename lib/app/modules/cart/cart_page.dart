@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:loja/app/modules/cart/components/cart_tile/cart_tile_widget.dart';
 import 'cart_controller.dart';
 
 class CartPage extends StatefulWidget {
@@ -17,10 +19,17 @@ class _CartPageState extends ModularState<CartPage, CartController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        centerTitle: true,
+        title: const Text('Carrinho'),
       ),
-      body: Column(
-        children: <Widget>[],
+      body: Observer(
+        builder: (_) {
+          return Column(
+            children: controller.cartStore.listCart
+                .map((element) => CartTileWidget(cartItem: element))
+                .toList(),
+          );
+        },
       ),
     );
   }

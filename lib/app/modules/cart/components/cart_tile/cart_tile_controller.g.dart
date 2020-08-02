@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cart_controller.dart';
+part of 'cart_tile_controller.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $CartController = BindInject(
-  (i) => CartController(i<CartStore>(), i<CartService>()),
+final $CartTileController = BindInject(
+  (i) => CartTileController(),
   singleton: true,
   lazy: true,
 );
@@ -18,7 +18,7 @@ final $CartController = BindInject(
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$CartController on _CartControllerBase, Store {
+mixin _$CartTileController on _CartTileControllerBase, Store {
   @override
   String toString() {
     return '''
