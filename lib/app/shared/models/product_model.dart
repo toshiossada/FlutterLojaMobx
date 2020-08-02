@@ -30,4 +30,20 @@ class ProductModel {
 
   int get totalStock => sizes.fold(0, (sum, size) => sum + size.stock);
   bool get hasStock => totalStock > 0;
+
+  ProductModel copyWith({
+    String name,
+    String description,
+    List<String> images,
+    String id,
+    List<ItemSizeModel> sizes,
+  }) {
+    return ProductModel(
+      name: name ?? this.name,
+      description: description ?? this.description,
+      images: images ?? this.images,
+      id: id ?? this.id,
+      sizes: sizes ?? this.sizes,
+    );
+  }
 }

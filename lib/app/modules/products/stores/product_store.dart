@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
-import '../models/product_model.dart';
+import '../../../shared/models/product_model.dart';
 import '../services/interfaces/product_service_interface.dart';
 
 part 'product_store.g.dart';

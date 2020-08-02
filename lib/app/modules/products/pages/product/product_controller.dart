@@ -2,7 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:loja/app/modules/products/stores/product_store.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../models/product_model.dart';
+import '../../../../shared/models/product_model.dart';
 
 part 'product_controller.g.dart';
 

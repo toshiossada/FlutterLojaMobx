@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:loja/app/shared/helpers/errors.dart';
-import 'package:loja/app/modules/products/models/product_model.dart';
+import '../../../shared/helpers/errors.dart';
+import '../../../shared/models/product_model.dart';
 import '../repositories/interfaces/product_repository_interface.dart';
 import 'interfaces/product_service_interface.dart';
 

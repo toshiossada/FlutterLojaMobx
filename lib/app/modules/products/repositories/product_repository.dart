@@ -6,9 +6,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../shared/helpers/errors.dart';
 import '../../../shared/helpers/firebase_errors.dart' as firebase_erros;
 
-
-
-import '../models/product_model.dart';
+import '../../../shared/models/product_model.dart';
 
 import 'interfaces/product_repository_interface.dart';
 
@@ -33,8 +31,8 @@ class ProductRepository implements IProductRepository {
           snap.documents.map((e) => ProductModel.fromDocument(e)).toList();
       return Right(result);
     } on PlatformException catch (e) {
-      return Left(
-          FirebaseFailure(message: firebase_erros.getErrorString(e.code), code: e.code));
+      return Left(FirebaseFailure(
+          message: firebase_erros.getErrorString(e.code), code: e.code));
     } on Exception catch (e) {
       return Left(DefaultFailure(message: e.toString()));
     }

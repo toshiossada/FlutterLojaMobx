@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../models/item_size_model.dart';
+import '../../../../../../../shared/models/item_size_model.dart';
 
 class SizeWidget extends StatelessWidget {
   final ItemSizeModel size;

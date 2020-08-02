@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../models/product_model.dart';
+import '../../../../../../shared/models/product_model.dart';
 import 'information_controller.dart';
 import 'size/size_widget.dart';
 
@@ -23,6 +23,13 @@ class InformationWidget extends StatefulWidget {
 class _InformationWidgetState
     extends ModularState<InformationWidget, InformationController> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.product = widget.product;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
@@ -30,7 +37,7 @@ class _InformationWidgetState
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            widget.product.name,
+            controller.product.name,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Padding(
@@ -44,7 +51,7 @@ class _InformationWidgetState
             ),
           ),
           Text(
-            "R\$ 19.99",
+            "R\$ ${controller.product.sizes[0].price}",
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -62,7 +69,7 @@ class _InformationWidgetState
             ),
           ),
           Text(
-            widget.product.description,
+            controller.product.description,
             style: TextStyle(
               fontSize: 16,
             ),
@@ -82,7 +89,7 @@ class _InformationWidgetState
               return Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: widget.product.sizes
+                children: controller.product.sizes
                     .map((e) => SizeWidget(
                           size: e,
                           selectedSize: controller.seletedSize,
@@ -94,7 +101,7 @@ class _InformationWidgetState
           ),
           const SizedBox(height: 20),
           Observer(builder: (_) {
-            return (widget.product.hasStock)
+            return (controller.product.hasStock)
                 ? SizedBox(
                     height: 44,
                     child: RaisedButton(

@@ -7,8 +7,8 @@ part of 'information_controller.dart';
 // **************************************************************************
 
 final $InformationController = BindInject(
-  (i) => InformationController(i<UserStore>()),
-  singleton: true,
+  (i) => InformationController(i<UserStore>(), i<CartStore>()),
+  singleton: false,
   lazy: true,
 );
 
