@@ -1,9 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
-
 import 'package:mobx/mobx.dart';
 
+import '../../shared/services/cart_service.dart';
 import '../../shared/stores/cart_store.dart';
-import 'services/cart_service.dart';
 
 part 'cart_controller.g.dart';
 

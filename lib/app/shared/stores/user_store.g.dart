@@ -7,7 +7,7 @@ part of 'user_store.dart';
 // **************************************************************************
 
 final $UserStore = BindInject(
-  (i) => UserStore(),
+  (i) => UserStore(i<IUserService>()),
   singleton: true,
   lazy: true,
 );
@@ -42,6 +42,13 @@ mixin _$UserStore on _UserStoreBase, Store {
     });
   }
 
+  final _$signOutAsyncAction = AsyncAction('_UserStoreBase.signOut');
+
+  @override
+  Future<void> signOut() {
+    return _$signOutAsyncAction.run(() => super.signOut());
+  }
+
   final _$_UserStoreBaseActionController =
       ActionController(name: '_UserStoreBase');
 
@@ -51,17 +58,6 @@ mixin _$UserStore on _UserStoreBase, Store {
         name: '_UserStoreBase.setUser');
     try {
       return super.setUser(v);
-    } finally {
-      _$_UserStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void signOut() {
-    final _$actionInfo = _$_UserStoreBaseActionController.startAction(
-        name: '_UserStoreBase.signOut');
-    try {
-      return super.signOut();
     } finally {
       _$_UserStoreBaseActionController.endAction(_$actionInfo);
     }

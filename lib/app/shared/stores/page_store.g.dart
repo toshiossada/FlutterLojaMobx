@@ -7,7 +7,7 @@ part of 'page_store.dart';
 // **************************************************************************
 
 final $PageStore = BindInject(
-  (i) => PageStore(),
+  (i) => PageStore(i<UserStore>(), i<CartStore>()),
   singleton: true,
   lazy: true,
 );

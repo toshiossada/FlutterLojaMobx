@@ -41,6 +41,7 @@ class UserRepository implements IUserRepository {
   Future<Either<Failure, UserModel>> currentUser() async {
     try {
       var user = await auth.currentUser();
+      if (user == null) return Right(UserModel());
       var result = await getDocumentUser(user.uid);
       return result;
     } on PlatformException catch (e) {

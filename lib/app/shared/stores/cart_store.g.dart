@@ -34,10 +34,40 @@ mixin _$CartStore on _CartStoreBase, Store {
     });
   }
 
+  final _$userAtom = Atom(name: '_CartStoreBase.user');
+
+  @override
+  UserModel get user {
+    _$userAtom.reportRead();
+    return super.user;
+  }
+
+  @override
+  set user(UserModel value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
+    });
+  }
+
+  final _$_CartStoreBaseActionController =
+      ActionController(name: '_CartStoreBase');
+
+  @override
+  void add(ProductModel product, ItemSizeModel size) {
+    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
+        name: '_CartStoreBase.add');
+    try {
+      return super.add(product, size);
+    } finally {
+      _$_CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-listCart: ${listCart}
+listCart: ${listCart},
+user: ${user}
     ''';
   }
 }

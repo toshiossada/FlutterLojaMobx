@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:loja/app/modules/cart/services/interfaces/cart_service_interface.dart';
+import 'package:loja/app/shared/services/interfaces/cart_service_interface.dart';
 
 void main() {
   ICartService service;

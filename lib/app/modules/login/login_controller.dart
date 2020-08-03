@@ -1,13 +1,13 @@
 import 'package:asuka/asuka.dart' as asuka;
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:loja/app/shared/stores/user_store.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../shared/components/loading_dialog/loading_dialog.dart';
-import '../../shared/models/user_model.dart';
 import '../../shared/models/login_user_model.dart';
+import '../../shared/models/user_model.dart';
 import '../../shared/services/interfaces/user_service_interface.dart';
+import '../../shared/stores/user_store.dart';
 
 part 'login_controller.g.dart';
 
@@ -81,8 +81,10 @@ abstract class _LoginControllerBase with Store {
           backgroundColor: Colors.red,
         ));
       }, (user) {
-        this.user = user;
-        userStore.setUser(user);
+        if (user.id != null) {
+          this.user = user;
+          userStore.setUser(user);
+        }
       });
     } on Exception catch (e) {
       asuka.showSnackBar(SnackBar(content: Text(e.toString())));

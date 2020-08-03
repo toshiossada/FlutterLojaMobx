@@ -7,7 +7,7 @@ part of 'cart_service.dart';
 // **************************************************************************
 
 final $CartService = BindInject(
-  (i) => CartService(),
+  (i) => CartService(i<ICartRepository>()),
   singleton: true,
   lazy: true,
 );

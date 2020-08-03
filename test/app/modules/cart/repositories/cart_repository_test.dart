@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dio/dio.dart';
 
-import 'package:loja/app/modules/cart/repositories/interfaces/cart_repository_interface.dart';
+import 'package:loja/app/shared/repositories/interfaces/cart_repository_interface.dart';
 
 class MockClient extends Mock implements Dio {}
 
