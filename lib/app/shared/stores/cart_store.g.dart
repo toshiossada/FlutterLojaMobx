@@ -7,7 +7,7 @@ part of 'cart_store.dart';
 // **************************************************************************
 
 final $CartStore = BindInject(
-  (i) => CartStore(),
+  (i) => CartStore(i<ICartService>(), i<ILoadingDialog>()),
   singleton: true,
   lazy: false,
 );

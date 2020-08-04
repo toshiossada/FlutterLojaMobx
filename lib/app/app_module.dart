@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:loja/app/modules/cart/cart_module.dart';
 
 import 'app_controller.dart';
 import 'app_widget.dart';
+import 'modules/cart/cart_module.dart';
 import 'modules/home/home_module.dart';
 import 'modules/login/login_module.dart';
 import 'modules/products/products_module.dart';

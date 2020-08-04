@@ -5,7 +5,7 @@ import 'product_model.dart';
 
 class CartModel {
   CartModel({this.product, this.size}) {
-    productId = product.id;
+    productId = product?.id;
     quantity = 1;
   }
 
@@ -15,22 +15,23 @@ class CartModel {
 
   ProductModel product;
 
+  bool stackable(ProductModel p, ItemSizeModel i) =>
+      p.id == productId && size.name == i.name;
+
   factory CartModel.fromJson(Map<String, dynamic> json) {
     return CartModel(
         //field: json[''],
         );
   }
 
-  Map<String, dynamic> toJson() => {};
+  Map<String, dynamic> toMap() => {
+        'pId': productId,
+        'quantity': quantity,
+        'size': size.toMap(),
+      };
 
-  factory CartModel.fromDocument(DocumentSnapshot document) {
-    var pId = document.data['pid'] as String;
-    ProductModel product;
-    Firestore.instance
-        .document('products/$pId')
-        .get()
-        .then((value) => product = ProductModel.fromDocument(value));
-
+  factory CartModel.fromDocument(
+      DocumentSnapshot document, ProductModel product) {
     return CartModel(
       product: product,
       size: ItemSizeModel.fromMap(document.data['size']),

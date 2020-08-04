@@ -19,7 +19,12 @@ class CartService implements ICartService {
   void dispose() {}
 
   @override
-  Future<Either<Failure, List<CartModel>>> currentUser(UserModel user) {
-    return _cartRepository.currentUser(user);
+  Future<Either<Failure, List<CartModel>>> getCartUser(UserModel user) {
+    return _cartRepository.getCartUser(user);
+  }
+
+  @override
+  Future<Either<Failure, bool>> add(UserModel user, CartModel item) {
+    return _cartRepository.add(user, item);
   }
 }

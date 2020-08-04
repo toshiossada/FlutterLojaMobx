@@ -6,5 +6,6 @@ import '../../models/cart_model.dart';
 import '../../models/user_model.dart';
 
 abstract class ICartRepository implements Disposable {
-  Future<Either<Failure, List<CartModel>>> currentUser(UserModel user);
+  Future<Either<Failure, List<CartModel>>> getCartUser(UserModel user);
+  Future<Either<Failure, bool>> add(UserModel user, CartModel item);
 }

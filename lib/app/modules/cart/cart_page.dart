@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:loja/app/modules/cart/components/cart_tile/cart_tile_widget.dart';
+
 import 'cart_controller.dart';
+import 'components/cart_tile/cart_tile_widget.dart';
 
 class CartPage extends StatefulWidget {
   final String title;

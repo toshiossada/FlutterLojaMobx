@@ -81,6 +81,14 @@ class _ProductsPageState
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.shopping_cart),
+        backgroundColor: Colors.white,
+        foregroundColor: Theme.of(context).primaryColor,
+        onPressed: () {
+          Modular.to.pushNamed('/cart');
+        },
+      ),
     );
   }
 }

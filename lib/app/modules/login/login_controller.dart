@@ -37,7 +37,7 @@ abstract class _LoginControllerBase with Store {
   bool get isValid => credential.isValidEmail && credential.isValidPassword;
 
   _LoginControllerBase(this._userService, this._loading, this.userStore) {
-    _load();
+    //_load();
   }
 
   @action
@@ -70,24 +70,5 @@ abstract class _LoginControllerBase with Store {
     }
   }
 
-  @action
-  Future<void> _load() async {
-    try {
-      await Future.delayed(Duration(seconds: 1));
-      var result = await _userService.currentUser();
-      result.fold((failure) {
-        asuka.showSnackBar(SnackBar(
-          content: Text('Falha ao entrar: ${failure.message}'),
-          backgroundColor: Colors.red,
-        ));
-      }, (user) {
-        if (user.id != null) {
-          this.user = user;
-          userStore.setUser(user);
-        }
-      });
-    } on Exception catch (e) {
-      asuka.showSnackBar(SnackBar(content: Text(e.toString())));
-    }
-  }
+
 }

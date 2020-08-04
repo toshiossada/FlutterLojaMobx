@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:loja/app/modules/products/products_module.dart';
+
 import '../../shared/components/custom_drawer/custom_drawer_widget.dart';
+import '../products/products_module.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
