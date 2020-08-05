@@ -10,13 +10,6 @@ class ProductsController = _ProductsControllerBase with _$ProductsController;
 
 abstract class _ProductsControllerBase with Store {
   final ProductStore productStore;
-  @observable
-  int value = 0;
 
   _ProductsControllerBase(this.productStore);
-
-  @action
-  void increment() {
-    value++;
-  }
 }

@@ -79,4 +79,14 @@ abstract class _CartStoreBase with Store {
       print(err.toString());
     }
   }
+
+  CartModel increment(CartModel cartItem) {
+    cartItem.quantity++;
+    return cartItem;
+  }
+
+  CartModel decrement(CartModel cartItem) {
+    cartItem.quantity--;
+    return cartItem;
+  }
 }

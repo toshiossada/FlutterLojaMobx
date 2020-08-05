@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import '../../../../shaared/custom_icon_button/custom_icon_button_widget.dart';
 import '../../../../shared/models/cart_model.dart';
+import 'cart_tile_controller.dart';
 
 class CartTileWidget extends StatelessWidget {
   final CartModel cartItem;
+  final CartTileController controller = Modular.get();
 
-  const CartTileWidget({Key key, this.cartItem}) : super(key: key);
+  CartTileWidget({Key key, this.cartItem}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,27 @@ class CartTileWidget extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
+            Column(
+              children: [
+                CustomIconButtonWidget(
+                  iconData: Icons.add,
+                  color: Theme.of(context).primaryColor,
+                  onTap: controller.increment,
+                ),
+                Observer(builder: (_) {
+                  return Text(
+                    cartItem.quantity.toString(),
+                    style: const TextStyle(fontSize: 20),
+                  );
+                }),
+                CustomIconButtonWidget(
+                  iconData: Icons.remove,
+                  color: Theme.of(context).primaryColor,
+                  onTap: controller.decrement,
+                ),
+              ],
+            ),
           ],
         ),
       ),

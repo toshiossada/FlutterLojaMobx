@@ -4,16 +4,26 @@ import 'item_size_model.dart';
 import 'product_model.dart';
 
 class CartModel {
-  CartModel({this.product, this.size}) {
+  CartModel({this.product, this.size, this.quantity}) {
     productId = product?.id;
-    quantity = 1;
+    if (quantity == null) quantity = 1;
   }
 
   String productId;
   int quantity;
   ItemSizeModel size;
-
   ProductModel product;
+
+  CartModel copyWith({
+    int quantity,
+    ItemSizeModel size,
+    ProductModel product,
+  }) =>
+      CartModel(
+        product: product ?? this.product,
+        quantity: quantity ?? this.quantity,
+        size: size ?? this.size,
+      );
 
   bool stackable(ProductModel p, ItemSizeModel i) =>
       p.id == productId && size.name == i.name;
